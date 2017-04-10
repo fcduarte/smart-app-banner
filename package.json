@@ -4,7 +4,7 @@
   "description": "Smart banner for Android or iOS",
   "main": "index.js",
   "scripts": {
-    "build": "browserify index.js -s SmartBanner | ccjs - > dist/smart-app-banner.js",
+    "build": "browserify index.js -s SmartBanner | ccjs - > dist/smart-app-banner.js && uglifycss index.css > dist/smart-app-banner.css",
     "lint": "eslint index.js"
   },
   "repository": {
@@ -46,6 +46,7 @@
   "devDependencies": {
     "browserify": "^10.2.4",
     "closurecompiler": "^1.5.1",
-    "eslint": "^3.9.1"
+    "eslint": "^3.9.1",
+    "uglifycss": "^0.0.25"
   }
 }
