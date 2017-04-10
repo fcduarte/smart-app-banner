@@ -18,7 +18,7 @@ var mixins = {
 		appMeta: 'apple-itunes-app',
 		iconRels: ['apple-touch-icon-precomposed', 'apple-touch-icon'],
 		getStoreLink: function () {
-			return 'https://itunes.apple.com/' + this.options.appStoreLanguage + '/app/id' + this.appId;
+			return 'https://itunes.apple.com/' + this.options.appStoreLanguage + '/app/id' + this.appId + '?mt=8';
 		}
 	},
 	android: {
@@ -74,8 +74,8 @@ var SmartBanner = function (options) {
 	// - user is on mobile safari for ios 6 or greater (iOS >= 6 has native support for SmartAppBanner)
 	// - running on standalone mode
 	// - user dismissed banner
-	var unsupported = !this.type;
-	var isMobileSafari = (this.type === 'ios' && agent.browser.name === 'Mobile Safari' && Number(agent.os.version) >= 6);
+	var unsupported = !this.type || !this.options.store[this.type];
+	var isMobileSafari = (this.type === 'ios' && agent.browser.name === 'Mobile Safari');
 	var runningStandAlone = navigator.standalone;
 	var userDismissed = cookie.get('smartbanner-closed');
 	var userInstalled = cookie.get('smartbanner-installed');
