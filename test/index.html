@@ -44,7 +44,10 @@
 				title: 'KudaGo',
 				author: 'KudaGo Inc',
 				button: 'OPEN',
-				force: force
+				force: force,
+				runOnInstall: function() {
+					alert('test')
+				}
 		});
 	};
 </script>

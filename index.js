@@ -56,7 +56,8 @@ var SmartBanner = function (options) {
 		},
 		theme: '', // put platform type ('ios', 'android', etc.) here to force single theme on all device
 		icon: '', // full path to icon image if not using website icon image
-		force: '' // put platform type ('ios', 'android', etc.) here for emulation
+		force: '', // put platform type ('ios', 'android', etc.) here for emulation
+		runOnInstall: function() {}
 	}, options || {});
 
 	if (this.options.force) {
@@ -164,6 +165,7 @@ SmartBanner.prototype = {
 			path: '/',
 			expires: new Date(Number(new Date()) + (this.options.daysReminder * 1000 * 60 * 60 * 24))
 		});
+		this.options.runOnInstall();
 	},
 	parseAppId: function () {
 		var meta = q('meta[name="' + this.appMeta + '"]');
